@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login';
 import NavBar from "./components/Navbar";
 import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
