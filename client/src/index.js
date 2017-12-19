@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import FacebookLogin from 'react-facebook-login';
 
-const responseFacebook = (response) => {
-  console.log(response);
-}
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // ReactDOM.render(
