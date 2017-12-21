@@ -9,33 +9,22 @@ import LoginPage from '../../pages/Login/Login.jsx';
 // 	</div> 
 
 // const Navbar = props => <main className="navbar" {...props} />;
-console.log(LoginPage())
 
 //CREATE LOGOUT BUTTON..
-class NavBar extends Component {
-  state = {
-    isLoggedIn: true
-  }
+const NavBar = props =>
+  <nav className="navbar navbar-default"> 
+    <div className="container-fluid">
+      <div className="navbar-header">
+        <Link to="/">Login</Link>
+        <Link to="/home">Home</Link>
+        <Link to="/all">All</Link>
+        <Link to="/single">Single</Link>
+        <img />
+        <FBLogout checkCookie={props.cWM}/>
+      </div>
+    </div>
+ </nav>
 
-
-  render(){
-    return (
-      <nav className="navbar navbar-default"> 
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/">Login</Link>
-            <Link to="/home">Home</Link>
-            <Link to="/all">All</Link>
-            <Link to="/single">Single</Link>
-            <img />
-            <FBLogout />
-          </div>
-        </div>
-     </nav>
-    )
-  }
-
-}
 
 
 export default NavBar;
