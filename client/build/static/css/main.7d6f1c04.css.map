@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/SearchButton/SearchButton.css"],"names":[],"mappings":"AAAA,QACC,WACA,UAAa,CAGd,cACC,SAAW","file":"static/css/main.7d6f1c04.css","sourcesContent":[".search{\n\twidth:50px;\n\topacity: 0.5;\n}\n\n.search:hover{\n\topacity: 1;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/components/SearchButton/SearchButton.css"],"sourceRoot":""}
