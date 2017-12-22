@@ -1,10 +1,10 @@
 import React from "react";
+import './Items.css';
 
 const Items = props => 
-	<div>
-		<img className="" src={props.src} />;
-		<p>Hey</p>
-		<p>What is up my dude</p>
+	<div className="item" onClick={props.onClick}>
+		<img className="item item-image" src={props.src} alt={props.children}/>
+		<div className="description">{props.description}</div>
 	</div>
 
 export default Items;

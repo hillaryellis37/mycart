@@ -9,6 +9,7 @@ import {
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import {FBLogin, FBLogout} from '../../components/FBlogin';
+import "./Login.css";
 
 
 //const fbAppId = '141088316668315';
@@ -20,7 +21,6 @@ import {FBLogin, FBLogout} from '../../components/FBlogin';
 
 
 //Login Logic
-// class LoginPage extends Component {
   // state = {
   //   isLoggedIn: false
   // }
@@ -43,26 +43,89 @@ import {FBLogin, FBLogout} from '../../components/FBlogin';
   //   this.checkIfLoggedIn(this.state.isLoggedIn);
   // }
 
-const LoginPage = props => {     
-  if (props.wantedState === true) {
-    return (
-      <Redirect to="/home" />
-    )
-  } else {
-    return (
-      <div>
-        <h1>My Cart</h1>
-        <Input type='text' placeholder='Login'/>
-        <Input type='password' placeholder='password'/>
-        <Button className='btn-primary'>Login</Button>
-        <h2>OR</h2>
-        <div>
-          <FBLogin checkCookie={props.cWM}/>
-          <Button className='btn-primary'>Demo</Button>
-        </div>
-      </div>
-    );
+// const LoginPage = props => {  
+
+//   this.props.callbackFromParent('wutup')
+  
+
+//   if (props.wantedState === true) {
+//     return (
+//       <Redirect to="/home" />
+//     )
+//   } else {
+//     return (
+//       <div className="align-elements">
+//         <div className="container">
+//           <h1>Des Carts</h1>
+//           <Input type='text' placeholder='Login'/>
+//           <Input type='password' placeholder='Password'/>
+//           <Button 
+//             className='button login-button' 
+//             onClick={() => console.log('this button does nothing')}
+//           >Login</Button>
+//           <h3> - OR -  </h3>
+//           <div>
+//             <FBLogin checkCookie={props.cWM}/>
+//             <Button 
+//               className='demo-button button'
+//               onClick={() => console.log('this button also does nothing')}
+//             >Demo</Button>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// };
+
+
+
+
+
+// const LoginPage = props => {  
+let storedData;
+
+class LoginPage extends React.Component {
+
+  // PASSES USER DATA FROM FB LOGIN API TO LOGIN PAGE
+  passDataFbToLogin(userData){
+    //vvv PASSES USER DATA TO APP.jsx
+    this.props.passDataFromLoginToApp(userData)
+    storedData = userData;
+    console.log('FBloing.jsx --> Login.jsx:', storedData);
   }
+
+  render(){
+    // if (this.props.wantedState === true) {
+    //   return (
+    //     <Redirect to="/home" />
+    //   )
+    // } else {
+      return (
+        <div className="align-elements">
+          <div className="container">
+            <h1>Des Carts</h1>
+            <Input type='text' placeholder='Login'/>
+            <Input type='password' placeholder='Password'/>
+            <Button 
+              className='button login-button' 
+              onClick={() => console.log('this button does nothing')}
+            >Login</Button>
+            <h3> - OR - </h3>
+            <div>
+              <FBLogin 
+                checkCookie={this.props.cWM} 
+                passDataFromFb={this.passDataFbToLogin.bind(this)}
+              />
+              <Button 
+                className='demo-button button'
+                onClick={() => console.log('this button also does nothing')}
+              >Demo</Button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  // }
 };
 
 export default LoginPage;
