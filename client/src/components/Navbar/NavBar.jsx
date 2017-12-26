@@ -26,8 +26,8 @@ const NavBar = props =>
           className='go-away-bootstrap-colors' 
           onClick={()=>console.log('Fake News')}
         >Settings</NavItem>
-        <LinkContainer to="/all" className='go-away-bootstrap-colors'>
-          <NavItem eventKey={2}>All-a-Carts Test Page</NavItem>
+        <LinkContainer to="/add" className='go-away-bootstrap-colors'>
+          <NavItem eventKey={2}>Add-a-Cart Test Page</NavItem>
         </LinkContainer>          
         <LinkContainer to="/single" className='go-away-bootstrap-colors'>
           <NavItem eventKey={3}>Single-a-Cart Test Page</NavItem>

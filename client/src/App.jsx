@@ -8,7 +8,7 @@ import {
 import NavBar from "./components/Navbar";
 import LoginPage from "./pages/Login";
 import Homepage from "./pages/Homepage";
-import AllCategories from "./pages/AllCategories";
+import AddCartPage from "./pages/AddCart";
 import SingleCategory from "./pages/SingleCategory";
 import Banner from './components/Banner';
 
@@ -26,7 +26,7 @@ class App extends Component {
 
     this.state = {
       isLoggedIn: false,
-      dataFromLogin: 'Initial Data',
+      testData: 'Initial Data',
       userId:'999999999',
       name:'Jane Doe',
       profileImg:'',
@@ -97,7 +97,6 @@ class App extends Component {
       return (
         <Router>
           <div>
-            <h2>{this.state.dataFromLogin}</h2>
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
             <Banner 
@@ -106,7 +105,7 @@ class App extends Component {
             />
             <Switch>
               <Route exact path="/home" component={Homepage} />
-              <Route exact path="/all" component={AllCategories} />
+              <Route exact path="/add" component={AddCartPage} />
               <Route exact path="/single" component={SingleCategory} />
             </Switch> 
           </div>

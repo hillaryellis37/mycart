@@ -4,7 +4,8 @@
 
 .go-away-bootstrap-colors>a{
 	color: #9d9d9d!important; 
-  background-color: transparent!important; 
+  background-color: transparent!important;
+  text-align: center; 
 }
 
 .go-away-bootstrap-colors>a:hover{
