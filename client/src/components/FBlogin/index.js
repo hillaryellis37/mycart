@@ -1,1 +1,1 @@
-export { FBLogin, FBLogout } from "./FBlogin.jsx";
+export { FBLogin, FBLogout, userData } from "./FBlogin.jsx";

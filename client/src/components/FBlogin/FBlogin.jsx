@@ -1,19 +1,21 @@
 /*global FB*/
 
-import React, { Component } from 'react';
+import React from 'react';
+import "./FBlogin.css";
+import FacebookIcon from "./fb_icon.png";
 
+let userData;
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
-  console.log(response);
+  console.log('Status Callback:', response);
   // The response object is returned with a status field that lets the
   // app know the current login status of the person.
   // Full docs on the response object can be found in the documentation
   // for FB.getLoginStatus().
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
-    console.log("User is logged in")
-
+    console.log("User is logged in");
   } else {
     console.log('User has logged out');
   }
@@ -66,9 +68,11 @@ window.fbAsyncInit = function() {
 
 // Here we run a very simple test of the Graph API after login is
 // successful.  See statusChangeCallback() for when this call is made.
-function pullUserData() {
+function pullUserData(cb) {
   FB.api('/me?fields=name,picture.width(500).height(500),email', function(response) {
-    console.log(response);
+    userData = response;
+    console.log('FBlogin.jsx pullUserData():', userData);
+    cb();
   });
 }
 
@@ -80,26 +84,51 @@ function fbLogout(cb){
 
 }
 
+//Callback for fbLogin to ensure pullUserData 
+//receieves use data before attempting to reroute
 function fbLogin(cb){
   FB.login(function(response){
     checkLoginState();
-    pullUserData();
-    cb();
+    pullUserData(cb);
   });
 
 }
 
 
-const FBLogin = props => (
-  <div>
-    <button onClick={() => fbLogin(props.checkCookie)}>LOGIN</button>
-  </div>
-)
+class FBLogin extends React.Component{
+  //RECEIVES USER DATA TO BE PASSES TO LOGIN PAGE TO APP.JSX
+  passFbData(data){
+    this.props.passDataFromFb(data)
+    console.log('User data:', data)
+  }
+
+  //pass data will only occur when the FBlogin component unmounts
+  componentWillUnmount(){
+    this.passFbData(userData);
+  }
+
+
+  render(){
+    return(
+      <div>
+        <button 
+          className="facebook-colors"
+          onClick={() => 
+            {
+              fbLogin(this.props.checkCookie)
+            }
+          }
+        >
+        <img className="facebook-icon" src={FacebookIcon} alt="Facebook_Icon"/>
+        Continue with Facebook
+        </button>
+      </div>
+    )
+  }
+}
 
 const FBLogout = props => (
-  <div>
-    <button onClick={() => fbLogout(props.checkCookie)}>LOGOUT</button>
-  </div>
+  <div onClick={() => fbLogout(props.checkCookie)}>Logout</div>
 )
 
 export {FBLogin, FBLogout};
