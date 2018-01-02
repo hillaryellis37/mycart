@@ -1,5 +1,5 @@
 .banner{
-	height:175px;
+	height:250px;
 	width:300px;
 	position:relative;
 	background-color: black;
@@ -32,8 +32,8 @@
 
 .profile{
 	position: absolute;
-	width:125px;
-	height:125px;
+	width:150px;
+	height:150px;
 	clip-path: circle(50% at 50% 50%);
 	opacity: 0.7;
 	top:50%;

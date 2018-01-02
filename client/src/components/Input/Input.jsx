@@ -1,8 +1,8 @@
 import React from 'react';
-
+import './Input.css';
 
 const Input = (props) =>
-	<div className="form-group">
+  <div className="form-group">
     <input
     	name={props.name}
     	className='form-control' 
@@ -10,7 +10,8 @@ const Input = (props) =>
     	placeholder={props.placeholder}
     	value={props.value}
     	onChange={props.onChange}
+        style={props.style}
     />
-	</div>
+  </div>
 
 export default Input;	

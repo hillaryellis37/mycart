@@ -6,17 +6,64 @@ import {
   Switch
 } from 'react-router-dom';
 import NavBar from "./components/Navbar";
+import Banner from './components/Banner';
+import CartsContainer from "./components/CartsContainer";
 import LoginPage from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import AddCartPage from "./pages/AddCart";
-import SingleCategory from "./pages/SingleCategory";
-import Banner from './components/Banner';
+import SpecificCart from "./pages/SpecificCart";
 
 // TEAMNAME: WNATN, MAHIRA,AIRHAM,ARMAIH, harmia
 // NAMES: Shopkeep, Vender
+// Tyrian Purple + Royal Blue
 
 const fbAppId = '141088316668315';
 let fbCookie = document.cookie;
+
+const divStyle = {
+  'position': 'relative',
+  'top':'80px',
+  'width':'320px',
+  'padding': '50px 50px 30px 30px',
+  'background-color': 'rgba(102, 2, 60, 0.85)',
+  // 'background-color': 'rgba(0, 35, 102, 0.9)'
+}
+
+const middleStyle = {
+  'position': 'absolute',
+  'top':'0',
+  'left':'350px',
+  'padding': '50px',
+  'background-color': 'rgba(102, 2, 60, 0.85)',
+  // 'background-color': 'rgba(0, 35, 102, 0.9)'
+}
+
+const cartsArray = [
+  {
+    src: "https://www.thedailymeal.com/sites/default/files/styles/hero_image_breakpoints_theme_tdmr_lg_1x/public/story/MAIN-skillsperfect-istock_thinkstock.jpg?itok=lBPpfbNb&timestamp=1418658115",
+    description: "Cooking"
+  },  
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
+    description: "Foods"
+  },  
+  {
+    src: "https://citelighter-cards.s3.amazonaws.com/p17d98f5st15qd1tsv1m9c1sbu11uo0_64674.jpg",
+    description: "Tech"
+  },  
+  {
+    src: "http://www.frador.com/wp-content/uploads/2015/04/gardening_in_mn.jpg",
+    description: "Gardening"
+  },  
+  {
+    src: "http://trendingallday.com/wp-content/uploads/2017/05/GordonRamsay.jpg",
+    description: "Gordon Ramsay"
+  },  
+  {
+    src: "asdfasdf",
+    description: "don say"
+  }
+];
 
 
 //Put all login fb cookie checking here?
@@ -31,12 +78,24 @@ class App extends Component {
       name:'Jane Doe',
       profileImg:'',
       cart:'',
-      item:''
+      item:'',
+      specificCart:{
+        src:'',
+        description:''
+      }
     };
   }
 
+  pullCartInfo(cartData){
+    //this.setState is IMMUTABLE, SHOULD BE MESSIN WITH
+    //NESTED OBJECTS DIRECTLY
+    // SOLUTION: create and mutate new object then set that object to state
+    var cartInfo = Object.assign({}, this.state.specificCart, {src:cartData.src, description:cartData.description});
+    this.setState({specificCart:cartInfo}, console.log(cartInfo));
+  }
+
   // RETRIEVES USER DATA FROM LOGIN PAGE
-  pullUserData = (dataFromLogin) => {
+  pullUserData(dataFromLogin){
     console.log('Data From Login:', dataFromLogin);
 
     if(dataFromLogin === undefined){
@@ -52,7 +111,7 @@ class App extends Component {
     }
   }
 
-  checkIfLoggedIn = () => {
+  checkIfLoggedIn(){
     fbCookie = document.cookie;
 
     console.log('FB Login Cookie:', fbCookie);
@@ -79,13 +138,15 @@ class App extends Component {
   }
 
   componentDidUpdate(){
-     console.log('COMPONENT DID UPDATE:',this.state)
+    console.log('COMPONENT DID UPDATE:',this.state)
   }
 
 // this.state.isLoggedIn === true
 
   render(){
     if(this.state.isLoggedIn === false){
+      //If not logged in, forces any URL typed after / to change to /login
+      window.history.pushState('', '', '/login');
       return (
         <LoginPage 
           // wantedState={this.state.isLoggedIn} 
@@ -99,15 +160,31 @@ class App extends Component {
           <div>
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
-            <Banner 
-              name={this.state.name} 
-              profileSrc={this.state.profileImg}
-            />
-            <Switch>
-              <Route exact path="/home" component={Homepage} />
-              <Route exact path="/add" component={AddCartPage} />
-              <Route exact path="/single" component={SingleCategory} />
-            </Switch> 
+            <div style={divStyle}>
+              <Banner 
+                name={this.state.name} 
+                profileSrc={this.state.profileImg}
+              />
+              <CartsContainer carts={cartsArray} passCartData={this.pullCartInfo.bind(this)}/>
+              <div style={middleStyle}>
+                <Switch>
+                  <Route 
+                    exact path="/home" 
+                    component= {Homepage}
+                  />
+                  <Route exact path="/add" component={AddCartPage} />
+                  <Route 
+                    exact path="/single" 
+                    render={ ()=>
+                      <SpecificCart 
+                        src={this.state.specificCart.src} 
+                        description={this.state.specificCart.description}
+                      />
+                    } 
+                  />
+                </Switch> 
+              </div>
+            </div>
           </div>
         </Router>  
       )

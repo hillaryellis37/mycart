@@ -1,3 +1,4 @@
+//Below needed to access FB variable for all components
 /*global FB*/
 
 import React from 'react';
@@ -16,6 +17,7 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
     console.log("User is logged in");
+    console.log("Access Token:", response.authResponse.accessToken);
   } else {
     console.log('User has logged out');
   }

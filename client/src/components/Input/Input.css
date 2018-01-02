@@ -1,0 +1,14 @@
+.form-group input:focus{
+	border-color: rgba(102, 2, 60, 0.5);
+  box-shadow: 0 1px 1px rgb(102, 2, 60) inset, 0 0 8px rgb(102, 2, 60);
+  outline: 0 none;
+}
+
+.form-group input{
+	background-color: rgba(204, 204, 204, 0.55);
+	border-color:rgba(140, 140, 140, 0.3);
+	color:rgb(102, 2, 60);
+	font-size: 13pt;
+	text-align: center;
+	font-family: "Helvetica";
+}
