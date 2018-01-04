@@ -9,6 +9,7 @@ import {
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import {FBLogin, FBLogout} from '../../components/FBlogin';
+import brand from './brand.png';
 import "./Login.css";
 
 
@@ -95,22 +96,18 @@ class LoginPage extends React.Component {
   }
 
   render(){
-    // if (this.props.wantedState === true) {
-    //   return (
-    //     <Redirect to="/home" />
-    //   )
-    // } else {
       return (
         <div className="align-elements">
+          <div className="brand">Des Carts</div>
+          <img src={brand} className='login-brand'/> 
           <div className="container">
-            <h1>Des Carts</h1>
             <Input type='text' placeholder='Login'/>
             <Input type='password' placeholder='Password'/>
             <Button 
               className='button login-button' 
               onClick={() => console.log('this button does nothing')}
             >Login</Button>
-            <h3> - OR - </h3>
+            <div className="divider"> - OR - </div>
             <div>
               <FBLogin 
                 checkCookie={this.props.cWM} 

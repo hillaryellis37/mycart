@@ -1,15 +1,4 @@
-.item-image{
-	margin: 0;
-}
-
-.description{
-	opacity: 1;
-}
-
-.item:hover .description{
-	cursor: default;
-}
-
-.item:hover .item-image{
-	cursor: default;
+.test-page{
+  position: relative;
+  top:50px;
 }

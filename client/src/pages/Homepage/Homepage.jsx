@@ -1,126 +1,91 @@
 import React, { Component } from 'react';
-import Input from '../../components/Input';
-// import Button from '../../components/Button';
-import Button from '../../components/Button';
-import Items from '../../components/Items';
 import {
   BrowserRouter as Router,
   Link
 } from 'react-router-dom';
+import { Carousel } from 'react-bootstrap';
+import './Homepage.css';
+
 //Homepage frontend logic goes here
 
-const carts = [
-  {
-    src: "https://www.thedailymeal.com/sites/default/files/styles/hero_image_breakpoints_theme_tdmr_lg_1x/public/story/MAIN-skillsperfect-istock_thinkstock.jpg?itok=lBPpfbNb&timestamp=1418658115",
-    description: "Cooking"
-  },  
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    description: "Foods"
-  },  
-  {
-    src: "https://citelighter-cards.s3.amazonaws.com/p17d98f5st15qd1tsv1m9c1sbu11uo0_64674.jpg",
-    description: "Tech"
-  },  
-  {
-    src: "http://www.frador.com/wp-content/uploads/2015/04/gardening_in_mn.jpg",
-    description: "Gardening"
-  },  
-  {
-    src: "http://trendingallday.com/wp-content/uploads/2017/05/GordonRamsay.jpg",
-    description: "Gordon Ramsay"
-  },  {
-    src: "asdfasdf",
-    description: "don say"
-  }
-];
-
+const carouselItem = {
+  width:'100%',
+  height:'400px',
+}
 
 class Homepage extends Component {
-  state = {
-    newCartInput: true,
-    name:'',
-    url:'',
-    appendNewCart: false,
-    carts: carts
-  }
-
-  inputOnAndOff(state){
-     state === false ?
-    (
-      this.setState({
-        newCartInput: true
-      })
-    ) : 
-    (
-      this.setState({
-        newCartInput: false
-      })
-    )
-  }
-
-  updateInput(e){
-    const name = e.target.name;
-
-    this.setState({
-      [name]: e.target.value
-    })
-  }
-
-  //NO logic attached to appendNewCart, but cannot auto generate without it for some reason...
-  createNewCart(array){
-    this.setState({
-      newCartInput: false,
-      appendNewCart: true
-    }, function(){
-      array.push({ 
-        src: this.state.url, 
-        description: this.state.name 
-      });
-      this.setState({ appendNewCart: false });
-      console.log(this.state, "\n New Cart Added");
-      console.log(carts); 
-    })
-  }
-
   render(){
     return (
       <div>
-        <Items 
-          description="Add Cart +" 
-          onClick=
-          {
-            () => this.inputOnAndOff(this.state.newCartInput)
-          }
-        />
+        <div className="carousel-container">
+          <Carousel controls={false} pauseOnHover={false} className="homepage">
+            <Carousel.Item style={carouselItem} index={1}>
+              <img 
+                width={1600} 
+                height={450} 
+                alt="1600x450" 
+                src="https://static.pexels.com/photos/346751/pexels-photo-346751.jpeg" 
+              />
+              <Carousel.Caption>
+                <h3>Shop Smart and Build Carts with Des Carts</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item style={carouselItem} index={2}>
+              <img 
+                width={1600} 
+                height={450} 
+                alt="1600x450" 
+                src="https://static.pexels.com/photos/298864/pexels-photo-298864.jpeg" 
+              />
+              <Carousel.Caption>
+                <h3>Idk what to put here. Ask later.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item style={carouselItem} index={3}>
+              <img 
+                width={1600} 
+                height={450} 
+                alt="1600x450" 
+                src="https://static.pexels.com/photos/167703/pexels-photo-167703.jpeg" 
+              />
+              <Carousel.Caption>
+                <h3>Creators Panels</h3>
+                <p>This one can be the creators panel(Contains icons to github, with our own individual githubs</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </div>
 
-        {//Conditional Rendering: if newCartInput is true, generate inputs
-          this.state.newCartInput ? 
-          <div className="container">
-            <Input
-              name="name"
-              value={this.state.name} 
-              placeholder="New Cart Name"
-              onChange={e => this.updateInput(e)}
-            />
-            <Input 
-              name="url"
-              placeholder = "Background Image URL"
-              value={this.state.url} 
-              onChange={e => this.updateInput(e)}
-            /> 
-            <Button onClick={()=> this.createNewCart(carts)}>Confirm</Button>
+        <div className="homepage-instructions">
+          <div className='blue-box'>
+            <div>1.</div>
+            <div>Select a cart to add an item to. 
+            If the cart you wish to add to is not there, 
+            simply click on "Add Cart +" to create a new 
+            Cart.</div>
           </div>
-          :  ""
-        }
+        </div>
 
-        {this.state.carts.map((cart,i) => 
-          <Items 
-            key = {i}
-            src= {cart.src}
-            description= {cart.description}
-          />
-        )}
+        <div className="homepage-instructions">
+          <div className='blue-box'>
+            <div>2. </div>
+            <div>Manually input the name, image, URL, and a 
+            short description of the item into the Cart. The 
+            item will be saved into the Cart and organized for 
+            you.</div>
+          </div>
+        </div> 
+
+        <div className="homepage-instructions">
+          <div className='blue-box'>
+            <div>3. </div>
+            <div>Click on an item to view, edit, or delete its 
+            content. Keep your various shopping lists organized 
+            and updated with Des Cart.</div>
+          </div>
+        </div>
 
       </div>
     );
@@ -128,3 +93,9 @@ class Homepage extends Component {
 }
 
 export default Homepage;
+
+
+      // <div className="blue-box">
+      //   Welcome to Des Carts. Store and organize your wish list items into Carts, so you will never 
+      //   need to go back and forth between shopping lists again!
+      // </div>

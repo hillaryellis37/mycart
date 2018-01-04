@@ -1,9 +1,30 @@
 .align-elements{
 	text-align: center;
+  width:500px;
+  position: fixed;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
-.container{
-	width:100%;
+.align-elements .brand{
+  font-size: 145pt;
+  font-family: 'Amatic SC', cursive;
+}
+
+.cart{
+  z-index:100;
+  width:1000px;
+  height: auto;
+}
+
+.align-elements .container .divider{
+  font-size: 35pt;
+  font-family: 'Amatic SC', cursive;
+}
+
+.align-elements .container{
+	width:320px;
 }
 
 .button{
@@ -15,9 +36,16 @@
   border-radius: 5px;
 }
 
+.login-brand{
+  position: absolute;
+  top:37px;
+  left:-30px;
+}
+
 .login-button{
 	width:100%;
 	padding: 10px;
+  background-color: rgb(102, 2, 60);
 }
 
 .demo-button{
@@ -25,9 +53,9 @@
   margin-top: 10px;
   width:100%;
   /*ASK MARINA FOR 3 SPECIFIC COLORS TO GRADIENT*/
-  background: linear-gradient(to right, purple, green , blue);
+  background: linear-gradient(to right, rgb(102, 2, 60), rgb(0, 35, 102));
 }
 
 .demo-button:hover{
-  background: linear-gradient(to right, blue, green , purple);
+  background: linear-gradient(to right, rgb(0, 35, 102),rgb(102, 2, 60));
 }
