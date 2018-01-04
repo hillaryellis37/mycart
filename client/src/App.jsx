@@ -33,9 +33,7 @@ const middleStyle = {
   'position': 'absolute',
   'top':'0',
   'left':'350px',
-  'padding': '50px',
-  'background-color': 'rgba(102, 2, 60, 0.85)',
-  // 'background-color': 'rgba(0, 35, 102, 0.9)'
+  'width': '1445px',
 }
 
 const cartsArray = [
