@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../Input';
 import Button from '../Button';
-import Items from '../Items';
+import Carts from '../Carts';
 import {
   BrowserRouter as Router,
   Link
@@ -76,7 +76,7 @@ class CartsContainer extends Component {
   render(){
     return (
       <div style={homepageStyle}>
-        <Items 
+        <Carts 
           description="Add Cart +" 
           onClick=
           {
@@ -108,12 +108,12 @@ class CartsContainer extends Component {
 
         {this.state.carts.map((cart,i) => 
           <Link to="/single">
-            <Items 
+            <Carts 
               key = {i}
               src= {cart.src}
               description= {cart.description}
               onClick={()=>this.props.passCartData(cart)}
-            >{cart.description}</Items>
+            >{cart.description}</Carts>
           </Link>
         )}
 

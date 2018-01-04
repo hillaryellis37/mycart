@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Carts from "../../components/Carts";
 import Items from "../../components/Items";
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
@@ -10,7 +11,7 @@ const specificCartStyle = {
   // 'background-color': 'rgba(0, 35, 102, 0.9)'
 }
 
-const ItemsStyle = {
+const cartsStyle = {
   'opacity':'1',
   'cursor':'default',
   'text-shadow': '2px 2px 1px black',
@@ -22,12 +23,12 @@ class SpecificCart extends Component {
     return (
       <div>
         <div style={specificCartStyle}>
-        	<Items 
+        	<Carts 
         		src={this.props.src}
         		description={this.props.description}
-            style={ItemsStyle}
+            style={cartsStyle}
             descriptionStyle={specificCartStyle}
-        	>{this.props.description}</Items>
+        	>{this.props.description}</Carts>
           <div>
             <FormGroup controlId="formControlsTextarea">
               <ControlLabel>Textarea</ControlLabel>
@@ -36,7 +37,33 @@ class SpecificCart extends Component {
           </div>
 
         </div>
-         <p>This is the {this.props.description} Cart Page</p>
+
+        <p>This is the {this.props.description} Cart Page</p>
+        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />        <Items
+          href="https://www.google.com"
+          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
+          itemName="Trees"
+        />
 
       </div>
     );
