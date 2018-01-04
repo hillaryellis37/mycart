@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Items from "../../components/Items";
+import Carts from "../../components/Carts";
 import "./AddCart.css";
 
 
@@ -26,7 +26,7 @@ class AddCart extends Component {
   render(){
     return (
 	  <div className="test-page">
-		<Items description="Add Cart +" />
+		<Carts description="Add Cart +" />
         <div className="container">
           <Input
         	name="name"
