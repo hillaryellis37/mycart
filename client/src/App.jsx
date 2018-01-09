@@ -12,6 +12,12 @@ import LoginPage from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import AddCartPage from "./pages/AddCart";
 import SpecificCart from "./pages/SpecificCart";
+import SingleCategory from "./pages/SingleCategory";
+import API from "./utils/API";
+import Carts from './components/Carts';
+import { Link } from "react-router-dom";
+
+
 
 // TEAMNAME: WNATN, MAHIRA,AIRHAM,ARMAIH, harmia
 // NAMES: Shopkeep, Vender
@@ -36,32 +42,14 @@ const middleStyle = {
   'width': '1445px',
 }
 
-const cartsArray = [
-  {
-    src: "https://www.thedailymeal.com/sites/default/files/styles/hero_image_breakpoints_theme_tdmr_lg_1x/public/story/MAIN-skillsperfect-istock_thinkstock.jpg?itok=lBPpfbNb&timestamp=1418658115",
-    description: "Cooking"
-  },  
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg",
-    description: "Foods"
-  },  
-  {
-    src: "https://citelighter-cards.s3.amazonaws.com/p17d98f5st15qd1tsv1m9c1sbu11uo0_64674.jpg",
-    description: "Tech"
-  },  
-  {
-    src: "http://www.frador.com/wp-content/uploads/2015/04/gardening_in_mn.jpg",
-    description: "Gardening"
-  },  
-  {
-    src: "http://trendingallday.com/wp-content/uploads/2017/05/GordonRamsay.jpg",
-    description: "Gordon Ramsay"
-  },  
-  {
-    src: "asdfasdf",
-    description: "don say"
-  }
-];
+const homepageStyle = {
+  'width':'100%'
+};
+
+const addCartInputStyle = {
+  'width':'288px'
+};
+
 
 
 //Put all login fb cookie checking here?
@@ -75,22 +63,11 @@ class App extends Component {
       userId:'999999999',
       name:'Jane Doe',
       profileImg:'',
-      cart:'',
-      item:'',
-      specificCart:{
-        src:'',
-        description:''
-      }
+      userCarts: [],
+      clickedCart: []
     };
   }
 
-  pullCartInfo(cartData){
-    //this.setState is IMMUTABLE, SHOULD BE MESSIN WITH
-    //NESTED OBJECTS DIRECTLY
-    // SOLUTION: create and mutate new object then set that object to state
-    var cartInfo = Object.assign({}, this.state.specificCart, {src:cartData.src, description:cartData.description});
-    this.setState({specificCart:cartInfo}, console.log(cartInfo));
-  }
 
   // RETRIEVES USER DATA FROM LOGIN PAGE
   pullUserData(dataFromLogin){
@@ -133,13 +110,20 @@ class App extends Component {
 
   componentDidMount(){
     this.pullUserData();
+    this.loadUserCarts();
   }
 
   componentDidUpdate(){
     console.log('COMPONENT DID UPDATE:',this.state)
   }
 
-// this.state.isLoggedIn === true
+  loadUserCarts = () => {
+    API.getUserCarts()
+      .then(res => 
+        this.setState({ userCarts: res.data}))
+
+      .catch(err => console.log(err));
+    };
 
   render(){
     if(this.state.isLoggedIn === false){
@@ -163,25 +147,34 @@ class App extends Component {
                 name={this.state.name} 
                 profileSrc={this.state.profileImg}
               />
-              <CartsContainer carts={cartsArray} passCartData={this.pullCartInfo.bind(this)}/>
-              <div style={middleStyle}>
+
+              <div style={homepageStyle}>
+                <Carts 
+                  description="Add Cart +" 
+                />
+              </div>
+                {this.state.userCarts.map(cart => (
+                  <Link to={"/single/" + cart._id}>
+                    <div className="item" data-id={cart._id}>
+                      <img className="item item-image" 
+                        src={cart.bg_url} 
+                      />
+                      <div className="description" style={this.style}>{cart.cart_name}</div>
+                    </div>
+                  </Link>
+
+                ))}
+                
+                <div style={middleStyle}>
                 <Switch>
                   <Route 
                     exact path="/home" 
                     component= {Homepage}
                   />
                   <Route exact path="/add" component={AddCartPage} />
-                  <Route 
-                    exact path="/single" 
-                    render={ ()=>
-                      <SpecificCart 
-                        src={this.state.specificCart.src} 
-                        description={this.state.specificCart.description}
-                      />
-                    } 
-                  />
+                  <Route exact path="/single/:id" component={SpecificCart} />
                 </Switch> 
-              </div>
+                </div>
             </div>
           </div>
         </Router>  
@@ -190,20 +183,6 @@ class App extends Component {
   }
 }
 
+
 export default App;
 
-  // render() {
-  //   return (
-  //     <div>
-  //       <p>Go team!</p>
-  //       <FacebookLogin
-		// 	    appId={fbAppId}
-		// 	    autoLoad={true}
-		// 	    fields="name,email,picture"
-		// 	    onClick={console.log('fb')}
-		// 	    callback={responseFacebook} 
-		// 	    icon="fa-facebook"
-		// 	  />
-  //     </div>
-  //   );
-  // }

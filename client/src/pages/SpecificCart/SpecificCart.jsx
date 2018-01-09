@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Carts from "../../components/Carts";
 import Items from "../../components/Items";
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import API from "../../utils/API";
 
 //Homepage frontend logic goes here
 
@@ -19,26 +20,33 @@ const cartsStyle = {
 }
 
 class SpecificCart extends Component {
+
+componentDidMount() {
+  let cartId = this.props.match.params.id;
+  this.getClickedCart(cartId);
+}
+
+  getClickedCart = (id) => {
+    API.getCart(id)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  };
+ 
+
+
+
+
+
   render(){
     return (
       <div>
-        <div style={specificCartStyle}>
-        	<Carts 
-        		src={this.props.src}
-        		description={this.props.description}
-            style={cartsStyle}
-            descriptionStyle={specificCartStyle}
-        	>{this.props.description}</Carts>
-          <div>
-            <FormGroup controlId="formControlsTextarea">
-              <ControlLabel>Textarea</ControlLabel>
-              <FormControl componentClass="textarea" placeholder="textarea" />
-            </FormGroup>
-          </div>
 
-        </div>
 
-        <p>This is the {this.props.description} Cart Page</p>
+    
+
+        <p>This is the {this.props.match.params.id} Cart Page</p>
         <Items
           href="https://www.google.com"
           src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
