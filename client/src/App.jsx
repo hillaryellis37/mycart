@@ -49,6 +49,10 @@ const homepageStyle = {
   'width':'100%'
 };
 
+const overflowStyle = {
+  'width':'200%'
+};
+
 const addCartInputStyle = {
   'width':'288px'
 };
@@ -145,24 +149,25 @@ class App extends Component {
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
             <div style={divStyle}>
-              <div style={homepageStyle}>
-                <Carts 
-                  description="Add Cart +" 
-                />
-              </div>
-                {this.state.userCarts.map(cart => (
-                  <Link to={"/single/" + cart._id}>
-                    <div className="item" data-id={cart._id}>
-                      <img className="item item-image" 
-                        src={cart.bg_url} 
-                      />
-                      <div className="description" style={this.style}>{cart.cart_name}</div>
-                    </div>
-                  </Link>
+              <div style={overflowStyle}>
+                <div style={homepageStyle}>
+                  <Carts 
+                    description="Add Cart +" 
+                  />
+                </div>
+                  {this.state.userCarts.map(cart => (
+                    <Link to={"/single/" + cart._id}>
+                      <div className="item" data-id={cart._id}>
+                        <img className="item item-image" 
+                          src={cart.bg_url} 
+                        />
+                        <div className="description" style={this.style}>{cart.cart_name}</div>
+                      </div>
+                    </Link>
 
-                ))}
+                  ))}
+                </div>
               </div>
-                
               <div>
                 <Switch>
                   <Route 
