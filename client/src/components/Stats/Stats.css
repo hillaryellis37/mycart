@@ -1,0 +1,39 @@
+.stats{
+	/*background-color: #777670;*/
+	height:400px;
+	color:black;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 26pt;
+	margin-top:10px;
+}
+.stats-holder{
+	position: relative;
+}
+
+.user{
+	padding:50px;
+}
+
+.followers, .following, .number-carts{
+	float:left;
+	width:33%;
+}
+
+.statsBox{
+	text-align: center;
+	width:50%;
+	float:left;
+	/*margin-top: 100px;*/
+}
+
+.profile{
+	position: absolute;
+	width:325px;
+	height:325px;
+	clip-path: circle(50% at 50% 50%);
+	opacity: 1;
+	top:50%;
+	right:20%;
+	transform: translate(0%,-50%);
+}
