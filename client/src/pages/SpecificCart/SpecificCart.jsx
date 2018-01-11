@@ -21,16 +21,28 @@ const cartsStyle = {
 
 class SpecificCart extends Component {
 
+  state = {
+    currentCart: {},
+    cartItems: []
+  };
+
 componentDidMount() {
   let cartId = this.props.match.params.id;
   this.getClickedCart(cartId);
+  this.getItems();
 }
 
   getClickedCart = (id) => {
     API.getCart(id)
-      .then(res => {
-        console.log(res);
-      })
+      .then(res => 
+        this.setState({ currentCart: res.data}))
+      .catch(err => console.log(err));
+  };
+ 
+   getItems = () => {
+    API.getItems()
+      .then(res => 
+        this.setState({ cartItems: res.data}))
       .catch(err => console.log(err));
   };
  
@@ -42,37 +54,17 @@ componentDidMount() {
   render(){
     return (
       <div>
-
-
-    
-
         <p>This is the {this.props.match.params.id} Cart Page</p>
-        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />        <Items
-          href="https://www.google.com"
-          src="http://s1.thingpic.com/images/37/QAnbgX78k1NvjA3XaYi64MQo.png"
-          itemName="Trees"
-        />
+        
+          {this.state.cartItems.map(item => (
+            <Items 
+            href={item.url}
+            itemName={item.item_name}        
+            src={item.image}
+            />
 
+          ))}
+        
       </div>
     );
   }

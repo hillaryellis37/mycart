@@ -10,7 +10,7 @@ var CartSchema = new Schema({
     type: String,
     required: false
   },
-  item: {
+  items: {
     type: Schema.Types.ObjectId,
     ref: "Item"
   }

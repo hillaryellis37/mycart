@@ -10,8 +10,8 @@ export default {
         return axios.get("/api/carts/" + id);
     },
 
-    saveProduct: function(productData) {
-        return axios.post("/api/products", productData);
+    getItems: function() {
+        return axios.get("/api/items");
     },
 
     getSavedProducts: function() {
