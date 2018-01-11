@@ -28,10 +28,13 @@ let fbCookie = document.cookie;
 
 const divStyle = {
   'position': 'relative',
-  'top':'80px',
-  'width':'320px',
-  'padding': '50px 50px 30px 30px',
-  'background-color': 'rgba(102, 2, 60, 0.85)',
+  'top':'30px',
+  'width':'100%',
+  'padding': '50px 0',
+  'background-color': 'transparent',
+  'height': '270px',
+  'overflow-x': 'auto',
+  'overflow-y': 'hidden',
   // 'background-color': 'rgba(0, 35, 102, 0.9)'
 }
 
@@ -49,7 +52,6 @@ const homepageStyle = {
 const addCartInputStyle = {
   'width':'288px'
 };
-
 
 
 //Put all login fb cookie checking here?
@@ -143,11 +145,8 @@ class App extends Component {
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
             <div style={divStyle}>
-              <Banner 
-                name={this.state.name} 
-                profileSrc={this.state.profileImg}
-              />
 
+              
               <div style={homepageStyle}>
                 <Carts 
                   description="Add Cart +" 
@@ -165,12 +164,15 @@ class App extends Component {
 
                 ))}
                 
-                <div style={middleStyle}>
+                <div>
                 <Switch>
-                  <Route 
-                    exact path="/home" 
-                    component= {Homepage}
-                  />
+                <Route 
+                  exact path="/home" 
+                  render= {() => 
+                    <Homepage 
+                      user={this.state.name}
+                      profileSrc= {this.state.profileImg}
+                    />
                   <Route exact path="/add" component={AddCartPage} />
                   <Route exact path="/single/:id" component={SpecificCart} />
                 </Switch> 

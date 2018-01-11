@@ -1,5 +1,5 @@
 .navbar-inverse{
-  background-color: rgba(102, 2, 60, 1);
+  background-color: #000000ba;
   border-color: rgba(102, 2, 60, 1);
 }
 
@@ -9,9 +9,9 @@
 	z-index: 100;
 	top:0;
 	min-height: 50px;
-	font-family: 'Amatic SC', cursive;
-	font-size: 26pt;
-	border-bottom: beige 5px solid;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 12pt;
 	border-radius: 0;
 }
 

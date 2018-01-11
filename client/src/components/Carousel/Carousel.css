@@ -1,0 +1,27 @@
+.carousel{
+	width:100%;
+	/*height:auto;*/
+}
+
+.carousel-container{
+	height:500px;
+}
+
+.panel-1{
+	position: absolute;
+	top:20%;
+	right:-25%;
+	font-size: 50pt;
+	text-shadow: 1px 1px 1px black;
+	/*font-weight:600;*/
+}
+
+.panel-2{
+	width:100%;
+	position: absolute;
+	top:48%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	font-size: 50pt;
+	text-shadow: 1px 1px 1px black;
+}

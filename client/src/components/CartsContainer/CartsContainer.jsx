@@ -11,7 +11,7 @@ import {
 const carts = [];
 
 const homepageStyle = {
-  'width':'100%'
+ 'width':'200%',
 };
 
 const addCartInputStyle = {
