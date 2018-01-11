@@ -145,8 +145,6 @@ class App extends Component {
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
             <div style={divStyle}>
-
-              
               <div style={homepageStyle}>
                 <Carts 
                   description="Add Cart +" 
@@ -163,22 +161,23 @@ class App extends Component {
                   </Link>
 
                 ))}
+              </div>
                 
-                <div>
+              <div>
                 <Switch>
-                <Route 
-                  exact path="/home" 
-                  render= {() => 
-                    <Homepage 
-                      user={this.state.name}
-                      profileSrc= {this.state.profileImg}
-                    />
+                  <Route 
+                    exact path="/home" 
+                    render = {() => 
+                      <Homepage 
+                        user={this.state.name}
+                        profileSrc= {this.state.profileImg}
+                      /> }
+                  />
                   <Route exact path="/add" component={AddCartPage} />
                   <Route exact path="/single/:id" component={SpecificCart} />
                 </Switch> 
-                </div>
+              </div>
             </div>
-          </div>
         </Router>  
       )
     }
