@@ -22,10 +22,13 @@ let fbCookie = document.cookie;
 
 const divStyle = {
   'position': 'relative',
-  'top':'80px',
-  'width':'320px',
-  'padding': '50px 50px 30px 30px',
-  'background-color': 'rgba(102, 2, 60, 0.85)',
+  'top':'30px',
+  'width':'100%',
+  'padding': '50px 0',
+  'background-color': 'transparent',
+  'height': '270px',
+  'overflow-x': 'auto',
+  'overflow-y': 'hidden',
   // 'background-color': 'rgba(0, 35, 102, 0.9)'
 }
 
@@ -34,6 +37,12 @@ const middleStyle = {
   'top':'0',
   'left':'350px',
   'width': '1445px',
+}
+
+const pageMount = {
+  // 'position':'absolute',
+  // 'top':'75px',
+  // 'left':'0',
 }
 
 const cartsArray = [
@@ -159,29 +168,31 @@ class App extends Component {
             <Redirect to="/home" />
             <NavBar cWM ={()=>this.componentWillMount()}/>
             <div style={divStyle}>
-              <Banner 
-                name={this.state.name} 
-                profileSrc={this.state.profileImg}
-              />
               <CartsContainer carts={cartsArray} passCartData={this.pullCartInfo.bind(this)}/>
-              <div style={middleStyle}>
-                <Switch>
-                  <Route 
-                    exact path="/home" 
-                    component= {Homepage}
-                  />
-                  <Route exact path="/add" component={AddCartPage} />
-                  <Route 
-                    exact path="/single" 
-                    render={ ()=>
-                      <SpecificCart 
-                        src={this.state.specificCart.src} 
-                        description={this.state.specificCart.description}
-                      />
-                    } 
-                  />
-                </Switch> 
-              </div>
+              <div style={middleStyle}></div>
+            </div>
+            <div style={pageMount}>
+              <Switch>
+                <Route 
+                  exact path="/home" 
+                  render= {() => 
+                    <Homepage 
+                      user={this.state.name}
+                      profileSrc= {this.state.profileImg}
+                    />
+                  }
+                />
+                <Route exact path="/add" component={AddCartPage} />
+                <Route 
+                  exact path="/single" 
+                  render={ ()=>
+                    <SpecificCart 
+                      src={this.state.specificCart.src} 
+                      description={this.state.specificCart.description}
+                    />
+                  } 
+                />
+              </Switch> 
             </div>
           </div>
         </Router>  

@@ -8,6 +8,7 @@
 	opacity: 1;
 	color:black;
 	font-family: 'Amatic SC', cursive;
+	float:left;
 }
 
 .item-image{

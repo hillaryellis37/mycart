@@ -1,0 +1,31 @@
+.installExtension{
+	height: 400px;
+	/*background-color: beige;*/
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 36pt;
+	position: relative;
+}
+.top-install{
+	border-bottom:8px black solid;
+}
+
+.bottom-install{
+	font-size: 26pt;
+}
+
+.chrome-install{
+	width:45%;
+	position: absolute;
+	top:50%;
+	right:0%;
+	transform:translate(-25%,-50%);
+}
+
+.chrome{
+	width:350px;
+	position: absolute;
+	top:50%;
+	left:25%;
+	transform:translate(-50%,-50%);
+}

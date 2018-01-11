@@ -23,28 +23,19 @@ class NavBar extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-
-            <Nav eventKey={1}>
-              <Input placeholder="Search Carts" className="navbar-input">Filter</Input>
-            </Nav>
-
             <NavItem 
-              eventKey={2} 
+              eventKey={1} 
               className='go-away-bootstrap-colors' 
               onClick={()=>console.log('Fake News')}
             >Settings</NavItem>
 
             <LinkContainer to="/single" className='go-away-bootstrap-colors'>
-              <NavItem eventKey={3}>SpecificCart Test Page</NavItem>
+              <NavItem eventKey={2}>SpecificCart Test Page</NavItem>
             </LinkContainer>        
             
-            <NavItem eventKey={4} className='go-away-bootstrap-colors'>
+            <NavItem eventKey={3} className='go-away-bootstrap-colors'>
               <FBLogout checkCookie={this.props.cWM}/>
             </NavItem>
-
-            <LinkContainer to="/add" className='go-away-bootstrap-colors'>
-              <NavItem eventKey={5}>New Test Page</NavItem>
-            </LinkContainer>   
 
           </Nav>
         </Navbar.Collapse>

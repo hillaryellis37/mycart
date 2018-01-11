@@ -1,0 +1,96 @@
+.creators-title{
+	font-size: 48pt;
+	position: absolute;
+	top:10%;
+	left:50%;
+	transform: translate(-50%,0%);
+	color:white;
+	text-shadow: 1px 1px 1px black;
+}
+
+.panel-3{
+	position: relative;
+}
+
+.bs-caption{
+	width: 50%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
+
+.image-outline{
+	width:320px;
+	height:320px;
+	clip-path: circle(50% at 50% 50%);
+	background-color:white; 
+	position: relative;
+}
+
+.image-outline>div{
+	opacity: 1;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+}
+
+.creators-name{
+	color:black;
+	font-size: 24pt;
+	/*border-bottom: 8px solid black;*/
+}
+
+.hillary{
+	float:left;
+	width: 33%;
+}
+
+.hillary img{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	clip-path: circle(50% at 50% 50%);
+	width:300px;
+	z-index: 1;
+	transition: opacity 0.5s;
+}
+
+.marina{
+	float:left;
+	width: 33%;
+}
+
+.marina img{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	clip-path: circle(50% at 50% 50%);
+	width:300px;
+	z-index: 1;
+	transition: opacity 0.5s;
+}
+
+.dork{
+	float:left;
+	width: 33%;
+}
+
+.dork img{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	clip-path: circle(50% at 50% 50%);
+	width:300px;
+	z-index: 1;
+	transition: opacity 0.5s;
+}
+
+.image-outline>div:hover img{
+	opacity: 0;
+}
+
