@@ -16,6 +16,7 @@ import SingleCategory from "./pages/SingleCategory";
 import API from "./utils/API";
 import Carts from './components/Carts';
 import { Link } from "react-router-dom";
+import './App.css';
 
 
 const fbAppId = '141088316668315';
@@ -38,7 +39,7 @@ const middleStyle = {
   'top':'0',
   'left':'350px',
   'width': '1445px',
-}
+};
 
 const homepageStyle = {
   'width':'100%'
@@ -50,6 +51,19 @@ const overflowStyle = {
 
 const addCartInputStyle = {
   'width':'288px'
+};
+
+const button = {
+  'position': 'absolute',
+  'left' : '3px',
+  'top' : '3px',
+  'opacity' : 1,
+  'background-color' : 'black',
+  'color': "white"
+};
+
+const relative = {
+  'position': 'relative'
 };
 
 
@@ -124,7 +138,21 @@ class App extends Component {
         this.setState({ userCarts: res.data}))
 
       .catch(err => console.log(err));
-    };
+  };
+
+  deleteCart = (id) => {
+    API.deleteCart(id)
+      .then(res => {
+        console.log(res.data);
+        let newCartArray = this.state.userCarts.filter(function(item) {
+          return item._id !== res.data._id;
+        })
+
+        this.setState({ userCarts: newCartArray});
+      })
+      .catch(err => console.log(err));
+  };
+ 
 
   render(){
     if(this.state.isLoggedIn === false){
@@ -151,15 +179,19 @@ class App extends Component {
                   />
                 </div>
                   {this.state.userCarts.map(cart => (
+                  <div className="item" data-id={cart._id}>
                     <Link to={"/single/" + cart._id}>
-                      <div className="item" data-id={cart._id}>
+                      <div>
                         <img className="item item-image" 
                           src={cart.bg_url} 
                         />
                         <div className="description" style={this.style}>{cart.cart_name}</div>
-                      </div>
-                    </Link>
 
+                      </div>
+
+                    </Link>
+                    <button style={button} onClick={() => this.deleteCart(cart._id)}>Remove</button>
+                  </div>
                   ))}
                 </div>
               </div>
@@ -186,4 +218,6 @@ class App extends Component {
 
 
 export default App;
+
+
 
