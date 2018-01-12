@@ -72,9 +72,11 @@ class SpecificCart extends Component {
 
 
 
+
+
   render(){
     return (
-      <div className="container-fluid">
+      <div>
         <p>This is the {this.props.match.params.id} Cart Page</p>
         
           {this.state.cartItems.map(item => (
