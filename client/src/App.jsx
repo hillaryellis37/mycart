@@ -18,11 +18,6 @@ import Carts from './components/Carts';
 import { Link } from "react-router-dom";
 
 
-
-// TEAMNAME: WNATN, MAHIRA,AIRHAM,ARMAIH, harmia
-// NAMES: Shopkeep, Vender
-// Tyrian Purple + Royal Blue
-
 const fbAppId = '141088316668315';
 let fbCookie = document.cookie;
 

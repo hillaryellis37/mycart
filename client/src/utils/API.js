@@ -10,12 +10,12 @@ export default {
         return axios.get("/api/carts/" + id);
     },
 
-    getItems: function() {
-        return axios.get("/api/items");
+    getItems: function(cartId) {
+        return axios.get("/api/carts/" + cartId);
     },
 
-    getSavedProducts: function() {
-        return axios.get("/api/products");
+    deleteItem: function(id) {
+        return axios.delete("/api/items/" + id);
     },
 
     deleteProduct: function(id) {
