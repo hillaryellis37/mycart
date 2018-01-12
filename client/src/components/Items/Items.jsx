@@ -6,7 +6,7 @@ class Items extends React.Component {
 	render(){
 		return(
 			<div className='actual-item img-responsive'> 
-				<a href={this.props.href} class='a-item'>
+				<a href={this.props.href} className='a-item'>
 					<Image 
 						className="actual-item-image center-block" 
 						src={this.props.src} 

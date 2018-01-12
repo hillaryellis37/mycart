@@ -26,14 +26,10 @@ class NavBar extends React.Component {
             <NavItem 
               eventKey={1} 
               className='go-away-bootstrap-colors' 
-              onClick={()=>console.log('Fake News')}
-            >Settings</NavItem>
-
-            <LinkContainer to="/single" className='go-away-bootstrap-colors'>
-              <NavItem eventKey={2}>SpecificCart Test Page</NavItem>
-            </LinkContainer>        
+              onClick={()=>console.log('')}
+            >Settings</NavItem>    
             
-            <NavItem eventKey={3} className='go-away-bootstrap-colors'>
+            <NavItem eventKey={2} className='go-away-bootstrap-colors'>
               <FBLogout checkCookie={this.props.cWM}/>
             </NavItem>
 
