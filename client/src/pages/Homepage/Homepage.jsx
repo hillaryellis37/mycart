@@ -78,6 +78,12 @@ class Homepage extends Component {
                   <p>-Michael, Wizard.</p>
                 </Carousel.Caption>
               </Carousel.Item>
+              <Carousel.Item style={carouselItem} index={4}>
+                <Carousel.Caption className="panel-2">
+                  <p>"It worked on UNIQLO.com :Des"</p>
+                  <p>-Aylan, Musically Competent.</p>
+                </Carousel.Caption>
+              </Carousel.Item>
             </Carousel>
           </Col>
         </Row>

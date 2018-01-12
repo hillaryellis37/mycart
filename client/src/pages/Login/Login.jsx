@@ -27,7 +27,7 @@ class LoginPage extends React.Component {
   }
 
   render(){
-      return (
+    return (
       <div>
         <div className="align-elements">
           <div className="brand">Des Carts</div>
