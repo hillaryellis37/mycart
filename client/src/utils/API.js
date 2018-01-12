@@ -18,8 +18,8 @@ export default {
         return axios.delete("/api/items/" + id);
     },
 
-    deleteProduct: function(id) {
-        return axios.delete("api/products/" + id);
+    deleteCart: function(id) {
+        return axios.delete("api/carts/" + id);
     }
 
 };
