@@ -16,7 +16,6 @@ import SingleCategory from "./pages/SingleCategory";
 import API from "./utils/API";
 import Carts from './components/Carts';
 import { Link } from "react-router-dom";
-import './App.css';
 
 
 const fbAppId = '141088316668315';
