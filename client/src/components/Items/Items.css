@@ -1,10 +1,31 @@
 .actual-item{
 	width:300px;
-	height:400px;
+	height:auto;
 	float: left;
+	text-align: center;
+	margin:20px;
 }
 
 .actual-item-image{
-	width:300px;
-	height: auto;
+	width:auto;
+	height:auto;
+	border: 1px black solid;
+	padding:15px;
+	transition: box-shadow 0.25s;
+
 }
+
+.a-item, .a-item:hover{
+	color:black;
+	font-size: 14pt;
+	font-family: 'Roboto', 'cursive';
+	font-weight: 600;	
+}
+
+.actual-item:hover .actual-item-image{
+	box-shadow: 2px 2px 5px grey,
+							-2px -2px 5px grey,
+							-2px 2px 5px grey,
+							2px -2px 5px grey;
+}
+
