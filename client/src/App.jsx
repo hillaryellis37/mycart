@@ -61,10 +61,6 @@ const button = {
   'color': "white"
 };
 
-
-
-
-
 const relative = {
   'position': 'relative'
 };

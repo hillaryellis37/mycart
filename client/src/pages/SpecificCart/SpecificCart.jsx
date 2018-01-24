@@ -3,6 +3,7 @@ import Carts from "../../components/Carts";
 import Items from "../../components/Items";
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import API from "../../utils/API";
+import './SpecificCart.css';
 
 
 //Homepage frontend logic goes here
@@ -19,6 +20,19 @@ const cartsStyle = {
   'cursor':'default',
   'text-shadow': '2px 2px 1px black',
   'float':'left'
+}
+
+const position ={
+  'position':'relative',
+}
+
+const deleteButton = {
+  'position':'absolute',
+  'top':'20px',
+  'left':'20px',
+  'opacity' : 1,
+  'background-color' : 'black',
+  'color': "white",
 }
 
 class SpecificCart extends Component {
@@ -72,21 +86,22 @@ class SpecificCart extends Component {
 
 
 
+
+
   render(){
     return (
-      <div className="container-fluid">
-        <p>This is the {this.props.match.params.id} Cart Page</p>
-        
-          {this.state.cartItems.map(item => (
-           <div> 
+      <div>
+        <br />
+          {this.state.cartItems.map((item, i) => (
+           <div className="specific-cart" key={i}> 
             <Items 
-            onclick
-            href={item.url}
-            itemName={item.item_name}        
-            src={item.image}
+              onclick
+              href={item.url}
+              itemName={item.item_name}        
+              src={item.image}
             />
-            <button onClick={() => this.deleteItem(item._id)}>Remove</button>
-          </div>
+            <button className="delete-button" onClick={() => this.deleteItem(item._id)}>Remove</button>
+           </div>
           ))}
         
       </div>
