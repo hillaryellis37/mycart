@@ -18,8 +18,14 @@ export default {
        return axios.delete("/api/items/" + id);
    },
 
+<<<<<<< HEAD
    deleteCart: function(id) {
        return axios.delete("api/carts/" + id);
    }
+=======
+    deleteCart: function(id) {
+        return axios.delete("api/carts/" + id);
+    }
+>>>>>>> 4b4bc159eb7692972412fba9c42e0cca8c69af27
 
 };

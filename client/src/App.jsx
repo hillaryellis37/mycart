@@ -61,10 +61,13 @@ const button = {
   'color': "white"
 };
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 4b4bc159eb7692972412fba9c42e0cca8c69af27
 const relative = {
   'position': 'relative'
 };
@@ -221,3 +224,9 @@ class App extends Component {
 
 
 export default App;
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 4b4bc159eb7692972412fba9c42e0cca8c69af27
