@@ -33,7 +33,7 @@ class NavBar extends React.Component {
               <NavItem eventKey={2}>SpecificCart Test Page</NavItem>
             </LinkContainer>        
             
-            <NavItem eventKey={3} className='go-away-bootstrap-colors'>
+            <NavItem eventKey={2} className='go-away-bootstrap-colors'>
               <FBLogout checkCookie={this.props.cWM}/>
             </NavItem>
 
