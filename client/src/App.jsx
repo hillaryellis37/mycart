@@ -62,12 +62,15 @@ const button = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 
 =======
 >>>>>>> 4b4bc159eb7692972412fba9c42e0cca8c69af27
+=======
+>>>>>>> 142cd864b776df70a744cea932f708a0e2773adf
 const relative = {
   'position': 'relative'
 };
@@ -223,6 +226,7 @@ class App extends Component {
 }
 
 
+<<<<<<< HEAD
 export default App;
 <<<<<<< HEAD
 =======
@@ -230,3 +234,6 @@ export default App;
 
 
 >>>>>>> 4b4bc159eb7692972412fba9c42e0cca8c69af27
+=======
+export default App;
+>>>>>>> 142cd864b776df70a744cea932f708a0e2773adf

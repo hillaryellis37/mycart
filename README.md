@@ -1,5 +1,5 @@
 # Des Cart
-
+Create and organize your shopping lists using Des Cart, an all in one website to categorize your various online shopping items. Create "carts" and grab information about a particular item using our companion Chrome Extension.
 
 ## Getting Started	
 
@@ -35,5 +35,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Special Thanks to Phelan Vendeville - [the-hobbes](https://github.com/the-hobbes) - for the Image Pulling Chrome Extension logic.
+* Special Thanks to [Phelan Vendeville](https://github.com/the-hobbes) for the Image Pulling Chrome Extension logic.
 
